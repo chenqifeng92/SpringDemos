@@ -15,7 +15,7 @@ import javax.annotation.Resource;
  */
 //让junit运行在spring的测试环境中，
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/beans.xml")//加载beans.xml
+@ContextConfiguration("/applicationContext.xml")
 public class TestUserJDBC {
     @Resource
     private UserDao userDao;

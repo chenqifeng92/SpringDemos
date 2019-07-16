@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestSpring {
 	//创建spring工厂
-	private BeanFactory factory = new ClassPathXmlApplicationContext("beans.xml");
+	private BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
 	@Test
 	public void testUser() {
