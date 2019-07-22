@@ -11,7 +11,7 @@ public class TestSpring {
 	private BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
 	@Test
-	public void testUser() {
+	public void testAAUser() {
 		UserAction ua = factory.getBean("userAction",UserAction.class);
 		User u = new User(1,"张三",2000,22);
 		ua.setUser(u);
