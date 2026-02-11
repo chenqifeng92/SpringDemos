@@ -10,8 +10,7 @@ public class TestSpring {
 	//创建spring工厂
 	private BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
-	@Test
-	public void testAPUser() {
+		public void testAPUser() {
 		UserAction ua = factory.getBean("userAction",UserAction.class);
 		User u = new User(1,"张三",2000,22);
 		ua.setUser(u);

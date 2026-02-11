@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringJUnitConfig
 @ContextConfiguration("/applicationContext.xml")
 public class TestJDBCTemplate {
+
     @Resource
     private WorkersDao workersDao;
 

@@ -11,8 +11,7 @@ public class TestSpring {
 	//创建spring工厂
 	private BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
-	@Test
-	public void testIXHello() {
+		public void testIXHello() {
 		//通过工厂获取spring的对象
 		//HelloWorld hello = (HelloWorld)factory.getBean("helloWorld");
 		HelloWorld hello = factory.getBean("helloWorld",HelloWorld.class);
@@ -24,8 +23,7 @@ public class TestSpring {
 		System.out.println(hello==hello2);
 	}
 	
-	@Test
-	public void testIXUser() {
+		public void testIXUser() {
 		UserAction ua = factory.getBean("userAction",UserAction.class);
 		User u = new User(1,"aa",2000,22);
 		ua.setUser(u);
