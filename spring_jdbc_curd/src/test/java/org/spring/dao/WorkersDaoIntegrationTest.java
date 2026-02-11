@@ -1,11 +1,15 @@
 package org.spring.dao;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.spring.model.Workers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.sql.DataSource;
@@ -14,6 +18,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringJUnitConfig(classes = WorkersDaoIntegrationTest.TestConfig.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class WorkersDaoIntegrationTest {
 
     @Configuration
@@ -40,6 +46,7 @@ class WorkersDaoIntegrationTest {
 
 
     @Test
+    @Order(1)
     void findAll_shouldReturnSeedData() {
         List<Workers> list = workersDao.findAll();
         assertEquals(2, list.size());
@@ -47,6 +54,7 @@ class WorkersDaoIntegrationTest {
     }
 
     @Test
+    @Order(2)
     void addAndFindById_shouldWork() {
         Workers workers = new Workers();
         workers.setName("Alice");
@@ -61,6 +69,7 @@ class WorkersDaoIntegrationTest {
     }
 
     @Test
+    @Order(3)
     void modifyAndDelete_shouldWork() {
         Workers first = workersDao.findAll().get(0);
         first.setName("Tom-Updated");
