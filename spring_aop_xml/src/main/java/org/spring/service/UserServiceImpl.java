@@ -5,7 +5,7 @@ import org.spring.dao.UserDao;
 import org.spring.model.User;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 //@Component ("userServiceImpl")
 @Service ("userServiceImpl")
