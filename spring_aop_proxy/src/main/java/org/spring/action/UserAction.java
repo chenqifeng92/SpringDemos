@@ -1,7 +1,7 @@
 package org.spring.action;
 
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.spring.model.User;
 import org.spring.service.UserServiceImpl;
