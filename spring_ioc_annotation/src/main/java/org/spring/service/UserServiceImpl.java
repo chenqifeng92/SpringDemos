@@ -1,6 +1,6 @@
 package org.spring.service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 import org.spring.dao.UserDao;
 import org.spring.model.User;

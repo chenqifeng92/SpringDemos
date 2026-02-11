@@ -6,7 +6,7 @@ import org.spring.service.UserServiceImpl;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 //@Component ("userAction") //此步相当于<bean id="userAction" class="org.UserAction" />
 @Controller ("userAction") //注意任何Component到左括号间必须有个空格，否则注入不生效
