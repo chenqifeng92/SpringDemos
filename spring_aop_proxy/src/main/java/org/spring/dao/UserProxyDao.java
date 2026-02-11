@@ -4,7 +4,7 @@ import org.spring.proxy.Logger;
 import org.spring.model.User;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 @Component ("userProxyDao")
 public class UserProxyDao implements UserDao{
