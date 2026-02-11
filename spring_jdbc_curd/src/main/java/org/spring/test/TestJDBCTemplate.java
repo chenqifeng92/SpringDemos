@@ -1,40 +1,59 @@
 package org.spring.test;
 
 import jakarta.annotation.Resource;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.spring.dao.WorkersDao;
 import org.spring.model.Workers;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * JDBC 示例运行器（保留在 main 目录以兼容历史目录结构）。
- *
- * 更完整的自动化测试请参考 src/test/java 下的单元测试、集成测试与性能测试。
+ * 当使用了以下注释之后，就可以直接在Test中进行依赖注入。
  */
-@Component
+@SpringJUnitConfig
+@ContextConfiguration("/applicationContext.xml")
 public class TestJDBCTemplate {
 
     @Resource
     private WorkersDao workersDao;
 
-    public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        TestJDBCTemplate runner = context.getBean(TestJDBCTemplate.class);
-
-        runner.printAllWorkers();
-
-        context.close();
+    @Test
+    public void contextShouldInjectWorkersDao() {
+        assertNotNull(workersDao);
     }
 
-    public void printAllWorkers() {
-        System.out.println("workers count=" + workersDao.findAll().size());
+    @Test
+    @Disabled("需要本地 MySQL 环境与示例数据，学习时按 jdbc.properties 配置后再执行")
+    public void testFindAll() {
+        workersDao.findAll();
     }
 
-    public void addSampleWorker() {
+    @Test
+    @Disabled("需要本地 MySQL 环境与示例数据，学习时按 jdbc.properties 配置后再执行")
+    public void testFindById() {
+        workersDao.findById(1);
+    }
+
+    @Test
+    @Disabled("需要本地 MySQL 环境与示例数据，学习时按 jdbc.properties 配置后再执行")
+    public void testAdd() {
         Workers wkr = new Workers();
-        wkr.setName("demo-user");
-        wkr.setSalary(5000);
-        wkr.setAge(25);
         workersDao.add(wkr);
+    }
+
+    @Test
+    @Disabled("需要本地 MySQL 环境与示例数据，学习时按 jdbc.properties 配置后再执行")
+    public void testDelete() {
+        workersDao.delete(1);
+    }
+
+    @Test
+    @Disabled("需要本地 MySQL 环境与示例数据，学习时按 jdbc.properties 配置后再执行")
+    public void testModify() {
+        Workers wkr = new Workers();
+        workersDao.modify(wkr);
     }
 }

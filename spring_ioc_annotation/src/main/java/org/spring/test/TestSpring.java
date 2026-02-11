@@ -1,5 +1,6 @@
 package org.spring.test;
 
+import org.junit.jupiter.api.Test;
 import org.spring.action.UserAction;
 import org.spring.model.User;
 import org.springframework.beans.factory.BeanFactory;
