@@ -3,12 +3,17 @@ package org.spring.service;
 import org.spring.dao.WorkersDao;
 import org.spring.model.Workers;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class WorkersServiceImpl implements WorkersService {
 
-    private WorkersDao workersDao;
+    private final WorkersDao workersDao;
+
+    public WorkersServiceImpl(WorkersDao workersDao) {
+        this.workersDao = workersDao;
+    }
 
     @Override
     public List<Workers> findAll() {

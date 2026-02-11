@@ -1,6 +1,6 @@
 package org.spring.test;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.spring.action.UserAction;
 import org.spring.model.User;
 import org.springframework.beans.factory.BeanFactory;
@@ -11,7 +11,7 @@ public class TestSpring {
 	private BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 	
 	@Test
-	public void testAXUser() {
+	public void testAAUser() {
 		UserAction ua = factory.getBean("userAction",UserAction.class);
 		User u = new User(1,"张三",2000,22);
 		ua.setUser(u);

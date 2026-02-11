@@ -1,0 +1,41 @@
+name: CI-CD
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Unit + integration tests
+        run: mvn -B -ntp clean test
+
+      - name: Performance test (Gatling)
+        run: mvn -B -ntp -pl spring_jdbc_curd -Pperformance verify
+
+      - name: Package all modules
+        run: mvn -B -ntp package -DskipTests
+
+      - name: Upload reports and artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-and-build-artifacts
+          path: |
+            **/target/surefire-reports/**
+            **/target/gatling/**
+            **/target/*.war
+            **/target/*.jar
